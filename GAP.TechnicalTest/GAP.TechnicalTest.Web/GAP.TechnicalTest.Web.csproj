@@ -127,6 +127,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\app.route.js" />
+    <Content Include="app\article\article.controller.js" />
+    <Content Include="app\article\article.html" />
+    <Content Include="app\article\article.service.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -927,6 +932,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\store\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>

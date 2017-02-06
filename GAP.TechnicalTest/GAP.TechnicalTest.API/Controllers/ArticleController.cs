@@ -136,7 +136,7 @@ namespace GAP.TechnicalTest.API.Controllers
 		/// Put the specified id and article.
 		/// </summary>
 		/// <returns>The put.</returns>
-		/// <param name="id">Identifier.</param>
+		/// <param name="id">Article identifier.</param>
 		/// <param name="article">Article.</param>
 		public HttpResponseMessage Put(int id, Article article)
 		{
