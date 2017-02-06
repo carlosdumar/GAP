@@ -1,10 +1,9 @@
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAP.TechnicalTest.API", "GAP.TechnicalTest.API\GAP.TechnicalTest.API.csproj", "{71FE6643-F968-442F-AB3C-DBAEA9ACCACA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAP.TechnicalTest.UnitTests", "GAP.TechnicalTest.UnitTests\GAP.TechnicalTest.UnitTests.csproj", "{9905000A-8AEC-4840-913C-EF26BCF5514E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAP.TechnicalTest.API.Tests", "GAP.TechnicalTest.API.Tests\GAP.TechnicalTest.API.Tests.csproj", "{9ABACB6E-187F-40BA-91A3-108BC86042C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,12 +15,9 @@ Global
 		{71FE6643-F968-442F-AB3C-DBAEA9ACCACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71FE6643-F968-442F-AB3C-DBAEA9ACCACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71FE6643-F968-442F-AB3C-DBAEA9ACCACA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9905000A-8AEC-4840-913C-EF26BCF5514E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9905000A-8AEC-4840-913C-EF26BCF5514E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9905000A-8AEC-4840-913C-EF26BCF5514E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9905000A-8AEC-4840-913C-EF26BCF5514E}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+		{9ABACB6E-187F-40BA-91A3-108BC86042C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ABACB6E-187F-40BA-91A3-108BC86042C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ABACB6E-187F-40BA-91A3-108BC86042C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ABACB6E-187F-40BA-91A3-108BC86042C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

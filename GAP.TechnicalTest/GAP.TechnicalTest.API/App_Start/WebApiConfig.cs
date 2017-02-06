@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http.Headers;
+using System.Web.Http;
 
 namespace GAP.TechnicalTest.API
 {
@@ -11,11 +12,25 @@ namespace GAP.TechnicalTest.API
 			// Web API routes
 			config.MapHttpAttributeRoutes();
 
-			config.Routes.MapHttpRoute(
+            config.Routes.MapHttpRoute(
+                name: "AllItemsApi",
+                routeTemplate: "services/{controller}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "GetStoresApi", 
+                routeTemplate: "services/{controller}/{action}/{storeId}",
+                defaults: new { storeId = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
 				name: "DefaultApi",
 				routeTemplate: "api/{controller}/{id}",
 				defaults: new { id = RouteParameter.Optional }
 			);
-		}
+
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+        }
 	}
 }

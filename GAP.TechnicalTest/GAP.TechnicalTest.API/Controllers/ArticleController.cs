@@ -5,19 +5,22 @@
 //-----------------------------------------------------------------------
 namespace GAP.TechnicalTest.API.Controllers
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Data.Entity;
-	using System.Data.Entity.Infrastructure;
-	using System.Linq;
-	using System.Net;
-	using System.Net.Http;
-	using System.Web;
-	using System.Web.Http;
-	using System.Web.Mvc;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Web.Http;
+    using Utilities;
 
+    [RoutePrefix("articles")]
     public class ArticleController : ApiController
     {
+        /// <summary>
+        /// 
+        /// </summary>
 		private Context db = new Context();
 
 		#region Methods
@@ -26,10 +29,68 @@ namespace GAP.TechnicalTest.API.Controllers
 		/// </summary>
 		/// <returns>The all articles.</returns>
 		[System.Web.Http.HttpGet]
-		public IEnumerable<Article> GetAllArticles()
+		public HttpResponseMessage GetAllArticles()
 		{
-			return db.Articles.AsEnumerable();
-		}
+            var result = new ArticleApiCollection();
+
+            try
+            {
+                List<Article> articles = db.Articles.ToList();
+
+                result.Articles = articles;
+                result.Success = "true";
+                result.Total_Elments = articles.Count;
+            }
+            catch (Exception)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occured while executing GetEmployee");
+            }
+
+            return Request.CreateResponse(result);
+        }
+
+        /// <summary>
+        /// Get the articles filtered by storeid.
+        /// </summary>
+        /// <param name="storeId">Id of the store.</param>
+        /// <returns>Articles by store</returns>
+        [ActionName("stores")]
+        public HttpResponseMessage GetArticlesByStore(int storeId)
+        {
+            var result = new ArticleApiCollection();
+
+            try
+            {
+                List<Article> article = db.Articles.Where(o => o.StoreId == storeId).ToList();
+
+                int numArticles = article.Count;
+
+                switch (numArticles)
+                {
+                    case 0:
+                        result.Success = "false";
+                        result.Error_Msg = HttpStatusCode.NotFound.ToString();
+                        result.Error_Code = "404";
+                        break;
+                    case 1:
+                        result.Article = article;
+                        result.Success = "true";
+                        break;
+                    default:
+                        result.Articles = article;
+                        result.Success = "true";
+                        result.Total_Elments = article.Count;
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occured while executing GetEmployee");
+            }
+            
+            return Request.CreateResponse(result);
+        }
 
 		/// <summary>
 		/// Get the article by id.

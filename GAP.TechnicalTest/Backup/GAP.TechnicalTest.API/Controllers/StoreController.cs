@@ -5,21 +5,20 @@
 //-----------------------------------------------------------------------
 namespace GAP.TechnicalTest.API.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    using System.Linq;
-    using System.Net;
-    using System.Net.Http;
-    using System.Web;
-    using System.Web.Http;
-    using System.Web.Mvc;
-    using Utilities;
+	using System;
+	using System.Collections.Generic;
+	using System.Data.Entity;
+	using System.Data.Entity.Infrastructure;
+	using System.Linq;
+	using System.Net;
+	using System.Net.Http;
+	using System.Web;
+	using System.Web.Http;
+	using System.Web.Mvc;
 
-    /// <summary>
-    /// Store controller.
-    /// </summary>
+	/// <summary>
+	/// Store controller.
+	/// </summary>
     public class StoreController : ApiController
     {
 		/// <summary>
@@ -33,32 +32,11 @@ namespace GAP.TechnicalTest.API.Controllers
 		/// </summary>
 		/// <returns>The all stores.</returns>
 		[System.Web.Http.HttpGet]
-		public HttpResponseMessage GetAllStores()
+		public IEnumerable<Store> GetAllStores()
 		{
-            var result = new StoreApiCollection();
+			return db.Stores.AsEnumerable();
+		}
 
-            try
-            {
-                List<Store> stores = db.Stores.ToList();
-
-                result.Stores = stores;
-                result.Success = "true";
-                result.Total_Elments = stores.Count;
-            }
-            catch (Exception)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Error occured while executing GetEmployee");
-            }
-
-            return Request.CreateResponse(result);
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
 		public Store Get(int id)
 		{
 			Store store = db.Stores.Find(id);
