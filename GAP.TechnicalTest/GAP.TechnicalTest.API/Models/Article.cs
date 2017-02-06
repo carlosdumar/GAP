@@ -1,9 +1,14 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="Article.cs" company="GAP">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace GAP.TechnicalTest.API
 {
+	using System;
+	using System.ComponentModel.DataAnnotations;
+	using System.ComponentModel.DataAnnotations.Schema;
+
 	/// <summary>
 	/// 
 	/// </summary>
