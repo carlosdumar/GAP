@@ -51,8 +51,13 @@ namespace GAP.TechnicalTest.API
 		[Required]
 		public decimal TotalInVault { get; set; }
 
-		// Foreign key for store
-		public int StoreId { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Image { get; set; }
+
+        // Foreign key for store
+        public int StoreId { get; set; }
 		// Navigation property
 		public Store Store { get; set; }
 

@@ -17,28 +17,25 @@
             deleteArticle: deleteArticle
         };
      
-        function getArticles() {
-            var defered = $q.defered;
-            var promise = defered.promise;
+        function getArticles() {           
 
-            return $http.get('/services/Article')
+            return $http.get('http://localhost:50971/services/Article')
                 .then(getArticlesComplete)
                 .catch(getArticlesFailed);
 
-            function getArticlesComplete(data, status, headers, config) {
-                defered.resolve(data);
+            function getArticlesComplete(response, status, headers, config) {
+                return response.data;
             }
             function getArticlesFailed(data, status, headers, config) {
-                return $q.reject("The request failed with response" + data + "and status code: " + status);
+                var errorMessage = "The request failed with response" + data + "and status code: " + status;
+                return errorMessage;
             }
-
-            return promise;
         }
         function getArticleById(articleId) {
-            var defered = $q.defered;
+            var defered = $q.defer();
             var promise = defered.promise;
 
-            return $http.get('/services/Article/' + articleId)
+            return $http.get('/api/Article/' + articleId)
                 .then(getArticleByIdComplete)
                 .catch(getArticleByIdFailed);
             
@@ -79,7 +76,7 @@
 
             $http({
                 method: 'POST',
-                url: '/services/Article',
+                url: '/api/Article',
                 data: $.param(article),
                 headers:
                     {
@@ -111,7 +108,7 @@
 
             $http({
                 method: 'PUT',
-                url: '/services/Article/' + articleId,
+                url: '/api/Article/' + articleId,
                 data: $.param(article),
                 headers:
                     {
@@ -143,7 +140,7 @@
 
             $http({
                 method: 'DELETE',
-                url: '/services/Article/' + articleId,
+                url: '/api/Article/' + articleId,
                 headers:
                     {
                         'Accept': 'application/json, application/xml, text/play, text/html, *.*',

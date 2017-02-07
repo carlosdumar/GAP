@@ -133,6 +133,10 @@
     <Compile Include="Migrations\201702060236244_Initial.Designer.cs">
       <DependentUpon>201702060236244_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702072214596_AddImageField.cs" />
+    <Compile Include="Migrations\201702072214596_AddImageField.Designer.cs">
+      <DependentUpon>201702072214596_AddImageField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Context\Context.cs" />
@@ -155,6 +159,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702060236244_Initial.resx">
       <DependentUpon>201702060236244_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702072214596_AddImageField.resx">
+      <DependentUpon>201702072214596_AddImageField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

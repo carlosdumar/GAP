@@ -1,61 +1,19 @@
 ﻿<section class="article">
-    <table class="article-table table table-bordered table-responsive table-striped">
-        <thead>
-            <tr>
-                <td></td>
-                <td>Name</td>
-                <td>Description</td>
-                <td>Price</td>
-                <td>TotalInShelf</td>
-                <td>TotalInVault</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="article in vm.articles">
-                <td class="delete_article">
-                    <a ng-click="deleteArticle(article)">
-                        <i class="fa fa-times-circle" aria-hidden="true"></i>
-                    </a>
-                </td>
-                <td ng-bind="article.id" ng-model="article.id"></td>
-                <td ng-bind="article.Name" ng-model="article.name"></td>
-                <td ng-bind="article.Description" ng-model="article.description"></td>
-                <td ng-bind="article.TotalInShelf" ng-model="article.totalinshelf"></td>
-                <td ng-bind="article.TotalInVault" ng-model="article.totalinvault"></td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        Add new article
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">New Article</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="name" ng-model="article.name" required />
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="nationality" ng-model="article.description" required />
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="nationality" ng-model="article.totalinshelf" required />
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="nationality" ng-model="article.totalinvault" required />
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" ng-click="saveArticle(article)">Save changes</button>
-                </div>
+    <div class="article-item">
+        <figure class="article-item-image">
+            <img ng-ref="" />
+        </figure>
+        <div class="article-item-description">
+            <div class="title">
+                <span></span>
+            </div>
+            <div class="description">
+                <p></p>
+            </div>
+            <div class="price">
+                <span class="price-inshelf"></span>
+                <span class="price-invault">
             </div>
         </div>
-    </div>
+    </div> 
 </section>
