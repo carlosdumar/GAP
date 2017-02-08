@@ -59,6 +59,7 @@ namespace GAP.TechnicalTest.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [System.Web.Http.HttpGet]
 		public Store Get(int id)
 		{
 			Store store = db.Stores.Find(id);
@@ -76,7 +77,9 @@ namespace GAP.TechnicalTest.API.Controllers
 		/// </summary>
 		/// <returns>The post.</returns>
 		/// <param name="store">Store.</param>
-		public HttpResponseMessage Post(Store store)
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.AcceptVerbs("OPTIONS")]
+        public HttpResponseMessage Post(Store store)
 		{
 			if (ModelState.IsValid)
 			{
@@ -101,7 +104,9 @@ namespace GAP.TechnicalTest.API.Controllers
 		/// <returns>The put.</returns>
 		/// <param name="id">Identifier.</param>
 		/// <param name="store">Store.</param>
-		public HttpResponseMessage Put(int id, Store store)
+        [System.Web.Http.HttpPut]
+        [System.Web.Http.AcceptVerbs("OPTIONS")]
+        public HttpResponseMessage Put(int id, Store store)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -136,7 +141,9 @@ namespace GAP.TechnicalTest.API.Controllers
 		/// </summary>
 		/// <returns>The delete.</returns>
 		/// <param name="id">Identifier.</param>
-		public HttpResponseMessage Delete(int id)
+        [System.Web.Http.HttpDelete]
+        [System.Web.Http.AcceptVerbs("OPTIONS")]
+        public HttpResponseMessage Delete(int id)
 		{
 			Store store = db.Stores.Find(id);
 

@@ -55,6 +55,7 @@ namespace GAP.TechnicalTest.API.Controllers
         /// <param name="storeId">Id of the store.</param>
         /// <returns>Articles by store</returns>
         [ActionName("stores")]
+        [HttpGet]
         public HttpResponseMessage GetArticlesByStore(int storeId)
         {
             var result = new ArticleApiCollection();
@@ -97,6 +98,7 @@ namespace GAP.TechnicalTest.API.Controllers
 		/// </summary>
 		/// <returns>The article by his id.</returns>
 		/// <param name="id">Id of the article.</param>
+        [HttpGet]
 		public Article Get(int id)
 		{
 			Article article = db.Articles.Find(id);
@@ -113,9 +115,11 @@ namespace GAP.TechnicalTest.API.Controllers
 		/// </summary>
 		/// <returns>The post.</returns>
 		/// <param name="article">Article.</param>
-		public HttpResponseMessage Post(Article article)
+        [HttpPost]
+        [AcceptVerbs("OPTIONS")]
+        public HttpResponseMessage Post(Article article)
 		{
-			if (ModelState.IsValid)
+			if (article != null)
 			{
 				db.Articles.Add(article);
 				db.SaveChanges();
@@ -132,13 +136,15 @@ namespace GAP.TechnicalTest.API.Controllers
 			}
 		}
 
-		/// <summary>
-		/// Put the specified id and article.
-		/// </summary>
-		/// <returns>The put.</returns>
-		/// <param name="id">Article identifier.</param>
-		/// <param name="article">Article.</param>
-		public HttpResponseMessage Put(int id, Article article)
+        /// <summary>
+        /// Put the specified id and article.
+        /// </summary>
+        /// <returns>The put.</returns>
+        /// <param name="id">Article identifier.</param>
+        /// <param name="article">Article.</param>
+        [HttpPut]
+        [AcceptVerbs("OPTIONS")]
+        public HttpResponseMessage Put(int id, Article article)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -168,12 +174,14 @@ namespace GAP.TechnicalTest.API.Controllers
 			return Request.CreateResponse(HttpStatusCode.OK);
 		}
 
-		/// <summary>
-		/// Delete the specified id.
-		/// </summary>
-		/// <returns>The delete.</returns>
-		/// <param name="id">Identifier.</param>
-		public HttpResponseMessage Delete(int id)
+        /// <summary>
+        /// Delete the specified id.
+        /// </summary>
+        /// <returns>The delete.</returns>
+        /// <param name="id">Identifier.</param>  
+        [HttpDelete]
+        [AcceptVerbs("OPTIONS")]
+        public HttpResponseMessage Delete(int id)
 		{
 			Article article = db.Articles.Find(id);
 
