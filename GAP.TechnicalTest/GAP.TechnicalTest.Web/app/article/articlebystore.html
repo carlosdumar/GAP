@@ -1,4 +1,11 @@
 ﻿<section class="article">
+    <div class="find-article">
+        <form ng-submit="getArticlesByStore(article)">
+            <label>Enter the id of the store</label>
+            <input type="text" ng-model="article.StoreId" />
+            <button type="submit">search</button>
+        </form>
+    </div>
     <div ng-repeat="articles in vm">
         <div class="article-item" ng-repeat="article in articles.Articles">
             <div class="modify-article">
@@ -7,7 +14,7 @@
                 </a>
             </div>
             <figure class="article-item-image">
-                <img ng-src="{{article.Image}}" width="200px" height="200px"/>
+                <img ng-src="{{article.Image}}" width="200px" height="200px" />
             </figure>
             <div class="article-item-description">
                 <div class="title">
@@ -21,6 +28,6 @@
                     <span class="price-invault">{{article.TotalInVault | currency }}</span>
                 </div>
             </div>
-        </div> 
-    </div>   
+        </div>
+    </div>
 </section>

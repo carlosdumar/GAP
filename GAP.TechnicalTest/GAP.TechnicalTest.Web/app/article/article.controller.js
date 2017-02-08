@@ -8,7 +8,7 @@
     ArticleController.$inject = ['articleFactory', '$scope', '$routeParams'];
 
     function ArticleController(articleFactory, $scope, $routeParams) {
-        /* jshint validthis:true */
+        
         var vm = this;
         vm.articles = [];
 
@@ -49,15 +49,16 @@
 
             $scope.article = {
                 'article': {
-                    'Name': article.name,
-                    'Description': article.description,
-                    'Price': article.price,
-                    'TotalInShelf': article.totalinshelf,
-                    'TotalInVault': article.totalinvault
+                    'Name': article.Name,
+                    'Description': article.Description,
+                    'Price': article.Price,
+                    'TotalInShelf': article.TotalInShelf,
+                    'TotalInVault': article.TotalInVault,
+                    'Image': article.Image
                 }
             };
 
-            articleFactory.saveArticle($scope.book)
+            articleFactory.saveArticle($scope.article)
                 .then(function (data) {
                     alert("The article was added!!");
                 })
@@ -87,9 +88,7 @@
         }
         $scope.deleteArticle = function (article) {
             $scope.article = {
-                'article': {
-                    'id': article.id
-                }
+                    'Id': article.ArticleId
             }
             articleFactory.deleteArticle($scope.article)
                 .then(function (data) {

@@ -1,0 +1,28 @@
+﻿<section class="article">
+    <div class="find-article">
+        <form ng-submit="getArticleById(article)">
+            <label>Enter the id of the article</label>
+            <input type="text" ng-model="article.Id"/>
+            <button type="submit" >search</button>
+        </form>
+    </div>
+    <div ng-repeat="articles in vm">
+        <div class="article-item" >
+            <figure class="article-item-image">
+                <img ng-src="{{articles.Image}}" width="200px" height="200px" />
+            </figure>
+            <div class="article-item-description">
+                <div class="title">
+                    <span ng-bind="articles.Name"></span>
+                </div>
+                <div class="description">
+                    <p ng-bind="articles.Description"></p>
+                </div>
+                <div class="price">
+                    <span class="price-inshelf">{{articles.TotalInShelf | currency }}</span>
+                    <span class="price-invault">{{articles.TotalInVault | currency }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

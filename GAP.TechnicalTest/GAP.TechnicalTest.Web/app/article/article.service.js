@@ -31,64 +31,58 @@
                 return errorMessage;
             }
         }
-        function getArticleById(articleId) {
-            var defered = $q.defer();
-            var promise = defered.promise;
+        function getArticleById(article) {
 
-            return $http.get('/api/Article/' + articleId)
+            return $http.get('http://localhost:50971/api/Article/' + article.Id)
                 .then(getArticleByIdComplete)
                 .catch(getArticleByIdFailed);
             
-            function getArticleByIdComplete(data, status, headers, config) {
-                defered.resolve(data);
+            function getArticleByIdComplete(response, status, headers, config) {
+                return response.data;
             }
 
             function getArticleByIdFailed(data, status, headers, config) {
-                return $q.reject("The request failed with response" + data + "and status code: " + status);
+                var errorMessage = "The request failed with response: " + data + "and status code: " + status;
+                return errorMessage;
             }
-
-            return promise;
         }
 
-        function getArticlesByStore(storeId) {
-            var defered = $q.defered;
-            var promise = defered.promise;
+        function getArticlesByStore(article) {
 
-            return $http.get('/services/Article/store/' + storeId)
+            return $http.get('http://localhost:50971/services/Article/stores/' + article.StoreId)
                 .then(getArticlesByStoreComplete)
                 .catch(getArticlesByStoreFailed);
 
-            function getArticlesByStoreComplete(data, status, headers, config) {
-                defered.resolve(data);
+            function getArticlesByStoreComplete(response, status, headers, config) {
+                return response.data;
             }
 
             function getArticlesByStoreFailed(data, status, headers, config) {
-                return $q.reject("The request failed with response" + data + "and status code: " + status);
+                var errorMessage = "The request failed with response: " + data + "and status code: " + status;
+                return errorMessage;
             }
-
-            return promise;
         }
 
         function saveArticle(article) {
 
-            var defered = $q.defer;
+            var defered = $q.defer();
             var promise = defered.promise;
 
             $http({
                 method: 'POST',
-                url: '/api/Article',
-                data: $.param(article),
+                url: 'http://localhost:50971/api/Article/',
+                data: article,
                 headers:
                     {
                         'Accept': 'application/json, application/xml, text/play, text/html, *.*',
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
             })
-            .success(saveArticleComplete)
-            .error(saveArticleFailed);
+            .then(saveArticleComplete)
+            .catch(saveArticleFailed);
 
-            function saveArticleComplete(data) {
-                if (data.status === 200) {
+            function saveArticleComplete(data, status) {
+                if (status === 200) {
                     defered.resolve(data);
                 } else {
                     defered.reject();
@@ -99,11 +93,11 @@
                 return $q.reject("The request failed with reponse" + data + "and status code: " + status);
             }
 
-            return promise;
+            return defered.promise;
         }
 
         function updateArticle(articleId, article) {
-            var defered = $q.defer;
+            var defered = $q.defer();
             var promise = defered.promise;
 
             $http({
@@ -134,35 +128,26 @@
             return promise;
         }
 
-        function deleteArticle(articleId) {
-            var defered = $q.defer;
+        function deleteArticle(article) {
+            var defered = $q.defer();
             var promise = defered.promise;
 
             $http({
                 method: 'DELETE',
-                url: '/api/Article/' + articleId,
+                url: 'http://localhost:50971/api/Article/' + article.Id,
                 headers:
                     {
                         'Accept': 'application/json, application/xml, text/play, text/html, *.*',
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/json'
                     }
             })
-            .success(deleteArticleComplete)
-            .catch(deleteArticleFailed);
+            .then(function (response) {
+                 defered.resolve(response);;
+            }, function (data, status) {
+                $q.reject("The request failed with reponse" + data + "and status code: " + status);
+            });
 
-            function deleteArticleComplete(data) {
-                if (data.status === 200) {
-                    defered.resolve(data);
-                } else {
-                    defered.reject();
-                }
-            }
-            function deleteArticleFailed(data, status) {
-
-                return $q.reject("The request failed with response" + data + "and status code: " + status);
-            }
-
-            return promise;
+            return defered.promise;
         }
     }
 })();

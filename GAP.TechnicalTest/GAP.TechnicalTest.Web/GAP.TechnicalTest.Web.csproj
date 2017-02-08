@@ -110,7 +110,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\article\AddArticle.html" />
+    <Content Include="app\article\articlebyid.html" />
+    <Content Include="app\article\articlebystore.html" />
     <Content Include="Content\article.css" />
+    <Content Include="Content\home.css" />
+    <Content Include="Image\logo.png" />
+    <Content Include="Image\shoes.jpg" />
     <Content Include="packages.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />

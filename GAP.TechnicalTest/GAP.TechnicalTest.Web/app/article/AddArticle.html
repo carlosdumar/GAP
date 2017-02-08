@@ -1,0 +1,35 @@
+﻿<section class="article">
+    <div class="add-article">
+        <form ng-submit="saveArticle(article)" class="form">
+            <div class="form-group">
+                <label>Enter the name of the article</label>
+                <input class="form-control" type="text" ng-model="article.Name" />
+            </div>
+            <div class="form-group">
+                <label>Enter the description of the article</label>
+                <input class="form-control" type="text" ng-model="article.Description" />
+            </div>
+            <div class="form-group">
+                <label>Enter the Price of the article</label>
+                <input class="form-control" type="text" ng-model="article.Price" required />
+            </div>
+            <div class="form-group">
+                <label>Enter the TotalInShelf of the article</label>
+                <input class="form-control" type="text" ng-model="article.TotalInShelf" required />
+            </div>
+            <div class="form-group">
+                <label>Enter the TotalInVault of the article</label>
+                <input class="form-control" type="text" ng-model="article.TotalInVault" required />
+            </div>
+            <div class="form-group">
+                <label>Enter the url Image of the article</label>
+                <input class="form-control" type="text" ng-model="article.Image" required />
+            </div>
+            <div class="form-group">
+                <label>Enter the StoreId of the article</label>
+                <input class="form-control" type="text" ng-model="article.StoreId" required />
+            </div>
+            <button type="submit">Add article</button>           
+        </form>
+    </div>
+</section>
