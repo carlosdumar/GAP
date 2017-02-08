@@ -1,0 +1,39 @@
+﻿.header {
+    display: flex;
+    justify-content: space-between;
+
+}
+.header .header-menu {
+    display: flex;
+    align-items: center;
+}
+.header .header-menu .menu  li {
+    display: inline-block;
+    margin: 0 2em;
+}
+.navbar {
+    position: relative;
+    background: red;
+    margin: 0;
+}
+.navbar-header > ul li {
+    display: inline-block;
+    margin-right: 2em;
+    color: white;
+}
+
+.image-principal img {
+    height: 50vh;
+}
+
+.home-title {
+    text-align: center;
+}
+
+.modify-article {
+    text-align: right;
+}
+
+.modify-article a {
+    color: gray;
+}

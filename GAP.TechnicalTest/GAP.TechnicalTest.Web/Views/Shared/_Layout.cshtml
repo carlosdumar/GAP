@@ -4,12 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/Content/article.css" rel="stylesheet" />
+    <link href="~/Content/home.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body ng-app="SuperShoesApp">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <header class="header">
+        <figure class="header-logo">
+            <img src="~/Image/logo.png" />
+        </figure>
+        <div class="header-menu">
+            <ul class="menu">
+                <li>
+                    <a ng-href="#">Home</a>
+                </li>
+                <li>
+                    <a ng-href="#">Blog</a>
+                </li>
+                <li>
+                    <a ng-href="#">About</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="bar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,7 +37,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <ul>
+                    <li>
+                        <a ng-href="/articlesbyid">Get Shoes By Id</a>
+                    </li>
+                    <li>
+                        <a ng-href="#">Get Shoes By Store</a>
+                    </li>
+                    <li>
+                        <a ng-href="#">Add Shoes</a>
+                    </li>
+                    <li>
+                        <a ng-href="#">Update Shoes</a>
+                    </li>
+                    <li>
+                        <a ng-href="#">Delete Shoes</a>
+                    </li>
+                </ul>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -25,11 +62,19 @@
             </div>
         </div>
     </div>
+    <section class="image-principal">
+        <div>
+            <img src="~/Image/shoes.jpg" width="100%"/>
+        </div>
+    </section>
+
+    @RenderBody()
+    
     <div ng-view>
 
     </div>
 
-    @RenderBody()
+   
 
     
     <script src="~/Scripts/angular.min.js"></script>

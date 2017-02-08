@@ -1,15 +1,20 @@
 ﻿<section class="article">
     <div ng-repeat="articles in vm">
         <div class="article-item" ng-repeat="article in articles.Articles">
+            <div class="modify-article">
+                <a ng-click="deleteArticle(article)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </div>
             <figure class="article-item-image">
                 <img ng-src="{{article.Image}}" width="200px" height="200px"/>
             </figure>
             <div class="article-item-description">
                 <div class="title">
-                    <span ng-bind="article.Name"></span>
+                    <span ng-bind="article.Name" ng-model="article.Id"></span>
                 </div>
                 <div class="description">
-                    <p ng-bind="article.Description"></p>
+                    <p ng-bind="article.Description" ng-model="article.Description"></p>
                 </div>
                 <div class="price">
                     <span class="price-inshelf">{{article.TotalInShelf | currency }}</span>

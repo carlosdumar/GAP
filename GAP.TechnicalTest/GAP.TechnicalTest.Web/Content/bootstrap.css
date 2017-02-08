@@ -562,11 +562,11 @@ h4 small,
   border-bottom: 1px solid #eeeeee;
 }
 
-ul,
+/*ul,
 ol {
   margin-top: 0;
   margin-bottom: 10px;
-}
+}*/
 
 ul ul,
 ol ul,
@@ -4026,7 +4026,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   position: relative;
   z-index: 1000;
   min-height: 50px;
-  margin-bottom: 20px;
   border: 1px solid transparent;
 }
 
