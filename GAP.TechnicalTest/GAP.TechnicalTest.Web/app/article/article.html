@@ -1,19 +1,21 @@
 ﻿<section class="article">
-    <div class="article-item">
-        <figure class="article-item-image">
-            <img ng-ref="" />
-        </figure>
-        <div class="article-item-description">
-            <div class="title">
-                <span></span>
+    <div ng-repeat="articles in vm">
+        <div class="article-item" ng-repeat="article in articles.Articles">
+            <figure class="article-item-image">
+                <img ng-src="{{article.Image}}" width="200px" height="200px"/>
+            </figure>
+            <div class="article-item-description">
+                <div class="title">
+                    <span ng-bind="article.Name"></span>
+                </div>
+                <div class="description">
+                    <p ng-bind="article.Description"></p>
+                </div>
+                <div class="price">
+                    <span class="price-inshelf">{{article.TotalInShelf | currency }}</span>
+                    <span class="price-invault">{{article.TotalInVault | currency }}</span>
+                </div>
             </div>
-            <div class="description">
-                <p></p>
-            </div>
-            <div class="price">
-                <span class="price-inshelf"></span>
-                <span class="price-invault">
-            </div>
-        </div>
-    </div> 
+        </div> 
+    </div>   
 </section>

@@ -1,0 +1,39 @@
+﻿.article .article-item {
+    display: inline-block;
+    width: 33%;
+}
+
+.article .article-item figure {
+    text-align: center;
+}
+.article .article-item .article-item-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article .article-item .article-item-description .description {
+    text-align: center;
+}
+
+.article-item-description .title span {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: darkgrey;
+    text-transform: uppercase;
+}
+
+.article-item-description .price .price-invault {
+    text-decoration: line-through;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .article .article-item {
+        width: 50%;
+    }
+}
+@media (max-width: 767px) {
+    .article .article-item {
+        width: 90%;
+    }
+}
